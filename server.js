@@ -36,6 +36,9 @@ server.use('/', videoRouter.router);
 server.use('/api/users', userProvider.router);
 server.use('/', userProvider.router);
 
-server.listen(8081, () => {
-  console.log('server started');
+const PORT = process.env.PORT || 8081;
+server.listen(PORT, () => {
+  console.log(`server started at ${PORT}`);
 });
+
+
