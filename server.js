@@ -1,4 +1,48 @@
-require('dotenv').config()
+// require('dotenv').config()
+// const express = require('express');
+// const morgan = require('morgan');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const path = require('path');
+
+// const server = express();
+// const blogRouter = require('./routes/blog')
+// const videoRouter = require('./routes/video')
+// const userProvider = require('./routes/users')
+// // const userRouter = require('./routes/user')
+// console.log('env',process.env.DB_PASSWORD)
+// console.log('env', process.env.MONGO_URL)
+
+
+// //db connection
+// main().catch(err => console.log(err));
+
+// async function main() {
+//   await mongoose.connect(`mongodb+srv://rishab:${process.env.DB_PASSWORD}@cluster0.loqz1.mongodb.net/creatorDB?retryWrites=true&w=majority&appName=Cluster0`);
+//   console.log('database connected')
+// }
+
+
+
+// //bodyParser
+// server.use(cors());
+// server.use(express.json());
+// server.use(morgan('default'));
+// server.use(express.static(process.env.PUBLIC_DIR));
+// server.use('/api/blogs', blogRouter.router);
+// server.use('/', blogRouter.router);
+// server.use('/api/videos', videoRouter.router);
+// server.use('/', videoRouter.router);
+// server.use('/api/users', userProvider.router);
+// server.use('/', userProvider.router);
+
+// const PORT = process.env.PORT || 8081;
+// server.listen(PORT, () => {
+//   console.log(`server started at ${PORT}`);
+// });
+
+
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
@@ -6,29 +50,34 @@ const cors = require('cors');
 const path = require('path');
 
 const server = express();
-const blogRouter = require('./routes/blog')
-const videoRouter = require('./routes/video')
-const userProvider = require('./routes/users')
-// const userRouter = require('./routes/user')
-console.log('env',process.env.DB_PASSWORD)
-console.log('env', process.env.MONGO_URL)
+const blogRouter = require('./routes/blog');
+const videoRouter = require('./routes/video');
+const userProvider = require('./routes/users');
 
+// Logging the environment variables for debugging
+console.log('DB Password:', process.env.DB_PASSWORD);
+console.log('Mongo URL:', process.env.MONGO_URL);
 
-//db connection
-main().catch(err => console.log(err));
+// Database connection
+main().catch(err => console.log('Database connection error:', err));
 
 async function main() {
   await mongoose.connect(`mongodb+srv://rishab:${process.env.DB_PASSWORD}@cluster0.loqz1.mongodb.net/creatorDB?retryWrites=true&w=majority&appName=Cluster0`);
-  console.log('database connected')
+  console.log('Database connected');
 }
 
-
-
-//bodyParser
+// Middleware setup
 server.use(cors());
 server.use(express.json());
-server.use(morgan('default'));
-server.use(express.static(process.env.PUBLIC_DIR));
+
+// Use 'combined' format for morgan to avoid deprecation warning
+server.use(morgan('combined'));
+
+// Serve static files, with a fallback in case PUBLIC_DIR is not set
+const publicDir = process.env.PUBLIC_DIR || path.join(__dirname, 'public');
+server.use(express.static(publicDir));
+
+// Route handling
 server.use('/api/blogs', blogRouter.router);
 server.use('/', blogRouter.router);
 server.use('/api/videos', videoRouter.router);
@@ -36,9 +85,8 @@ server.use('/', videoRouter.router);
 server.use('/api/users', userProvider.router);
 server.use('/', userProvider.router);
 
+// Server setup - use the PORT from environment variables or fallback to 8081
 const PORT = process.env.PORT || 8081;
 server.listen(PORT, () => {
-  console.log(`server started at ${PORT}`);
+  console.log(`Server started at port ${PORT}`);
 });
-
-
