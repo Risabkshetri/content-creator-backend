@@ -79,11 +79,9 @@ server.use(express.static(publicDir));
 
 // Route handling
 server.use('/api/blogs', blogRouter.router);
-server.use('/', blogRouter.router);
 server.use('/api/videos', videoRouter.router);
-server.use('/', videoRouter.router);
 server.use('/api/users', userProvider.router);
-server.use('/', userProvider.router);
+// server.use('/', userProvider.router);
 
 // Server setup - use the PORT from environment variables or fallback to 8081
 const PORT = process.env.PORT || 8081;
