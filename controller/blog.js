@@ -30,12 +30,40 @@ exports.getAllBlogs = async (req, res) => {
   res.json(blogs);
 };
 
+// exports.getBlog = async (req, res) => {
+//   const id = req.params.id;
+//   const blog = await Blog.findById(id);
+//   res.json(blog);
+// };
 exports.getBlog = async (req, res) => {
-  const id = req.params.id;
-  console.log({id})
-  const blog = await Blog.findById(id);
-  res.json(blog);
+  try {
+    const id = req.params.id; // Get the id from the route params
+    console.log({ id }); // For debugging purposes
+
+    const blog = await Blog.findById(id); // Use findById to get a specific blog by its ID
+    if (!blog) {
+      return res.status(404).json({ message: 'Blog not found' });
+    }
+
+    res.json(blog); // Return the specific blog
+  } catch (error) {
+    console.error(error); // Log any errors that occur
+    res.status(500).json({ message: 'Server error' });
+  }
 };
+
+// exports.getBlogContent = async (req, res) => {
+//   try {
+//     const blog = await Blog.findById(req.params.id, { content: 1, title: 1, author: 1 }); 
+//     if (!blog) {
+//       return res.status(404).json({ message: 'Blog not found' });
+//     }
+//     res.json(blog);  
+//   } catch (error) {
+//     res.status(500).json({ message: 'Server Error' });
+//   }
+// };
+
 
 exports.replaceBlog = async (req, res) => {
   const id = req.params.id;
@@ -48,6 +76,7 @@ exports.replaceBlog = async (req, res) => {
     res.status(400).json(err);
   }
 };
+
 
 exports.updateBlog = async (req, res) => {
   const id = req.params.id;

@@ -3,9 +3,10 @@ const blogController = require('../controller/blog'); // Import the blog control
 const router = express.Router();
 
 router
-.post('/', blogController.createBlog) // This is where the error is pointing
+.post('/', blogController.createBlog)
 .get('/', blogController.getAllBlogs)
 .get('/:id', blogController.getBlog)
+// .get('/content/:id', blogController.getBlogContent)
 .put('/:id', blogController.replaceBlog)
 .patch('/:id', blogController.updateBlog)
 .delete('/:id', blogController.deleteBlog);
