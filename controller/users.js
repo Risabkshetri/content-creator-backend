@@ -21,11 +21,13 @@ exports.register = async (req, res) => {
 
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedEmail = await bcrypt.hash(email, 10);
+    const hashedUsername = await bcrypt.hash(username, 10);
 
     // Create new user
     const user = new User({
-      username,
-      email,
+      username: hashedUsername,
+      email: hashedEmail,
       password: hashedPassword
     });
 
@@ -72,6 +74,8 @@ exports.login = async (req, res) => {
       { expiresIn: '1h' }
     );
 
+    console.log(token)
+
     res.json({
       token,
       user: {
@@ -113,31 +117,31 @@ exports.login = async (req, res) => {
 //   }
 // };
 
-// // Read all
-// exports.getAllUsers = async (req, res) => {
-//   try {
-//     const users = await User.find();
-//     res.json(users);
-//   } catch (err) {
-//     console.error("Error in getAllUsers:", err);
-//     res.status(500).json({ error: "An error occurred while fetching users" });
-//   }
-// };
+// Read all
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    console.error("Error in getAllUsers:", err);
+    res.status(500).json({ error: "An error occurred while fetching users" });
+  }
+};
 
-// // Read one
-// exports.getUser = async (req, res) => {
-//   try {
-//     const id = req.params.id;
-//     const user = await User.findById(id);
-//     if (!user) {
-//       return res.status(404).json({ error: "User not found" });
-//     }
-//     res.json(user);
-//   } catch (err) {
-//     console.error("Error in getUser:", err);
-//     res.status(500).json({ error: "An error occurred while fetching the user" });
-//   }
-// };
+// Read one
+exports.getUser = async (req, res) => {
+  try {
+    const id = req.params._id;
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    res.json(user);
+  } catch (err) {
+    console.error("Error in getUser:", err);
+    res.status(500).json({ error: "An error occurred while fetching the user" });
+  }
+};
 
 // // Update (Replace)
 // exports.replaceUser = async (req, res) => {
