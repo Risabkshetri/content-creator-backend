@@ -1,18 +1,16 @@
 require('dotenv').config();
 const express = require('express');
+const twt = require('jsonwebtoken');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const bcrypt = require('bcryptjs');
 const path = require('path');
 
 const server = express();
 const blogRouter = require('./routes/blog');
 const videoRouter = require('./routes/video');
 const userProvider = require('./routes/users');
-
-// Logging the environment variables for debugging
-console.log('DB Password:', process.env.DB_PASSWORD);
-console.log('Mongo URL:', process.env.MONGO_URL);
 
 // Database connection
 main().catch(err => console.log('Database connection error:', err));
@@ -25,6 +23,10 @@ async function main() {
 // Middleware setup
 server.use(cors());
 server.use(express.json());
+server.use(cors({
+  origin: 'http://localhost:8081',
+  credentials: true
+}));
 
 // Use 'combined' format for morgan to avoid deprecation warning
 server.use(morgan('combined'));
