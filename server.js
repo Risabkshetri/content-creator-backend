@@ -20,13 +20,27 @@ async function main() {
   console.log('Database connected');
 }
 
+server.get("/protected", authenticateToken, (req, res) => {
+  res.json({ message: "This is a protected route", user: req.user });
+});
+
 // Middleware setup
 server.use(cors());
 server.use(express.json());
-server.use(cors({
-  origin: 'http://localhost:8081',
-  credentials: true
-}));
+server.use(cors());
+
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (token == null) return res.sendStatus(401);
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+}
 
 // Use 'combined' format for morgan to avoid deprecation warning
 server.use(morgan('combined'));

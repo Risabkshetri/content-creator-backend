@@ -2,7 +2,9 @@ const User = require('../model/users');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'; // Use environment variable in production
+// Use environment variables for sensitive information
+const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
 
 exports.register = async (req, res) => {
   try {
@@ -14,70 +16,55 @@ exports.register = async (req, res) => {
     });
     
     if (existingUser) {
-      return res.status(400).json({ 
-        message: 'User already exists' 
-      });
+      return res.status(400).json({ message: 'User already exists' });
     }
 
     // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const hashedEmail = await bcrypt.hash(email, 10);
-    const hashedUsername = await bcrypt.hash(username, 10);
+    const hashedPassword = await bcrypt.hash(password, 12);
 
     // Create new user
     const user = new User({
-      username: hashedUsername,
-      email: hashedEmail,
+      username,
+      email,
       password: hashedPassword
     });
 
     await user.save();
 
-    res.status(201).json({ 
-      message: 'User registered successfully' 
-    });
+    res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     console.error('Registration error:', error);
-    res.status(500).json({ 
-      message: 'Error registering user' 
-    });
+    res.status(500).json({ message: 'Error registering user' });
   }
 };
 
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
-
-    // Find user
+    // Find user by email
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ 
-        message: 'User not found' 
-      });
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
 
     // Check password
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
-      return res.status(401).json({ 
-        message: 'Invalid password' 
-      });
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Generate JWT
-    const token = jwt.sign(
-      { 
-        userId: user._id, 
-        username: user.username 
-      },
-      JWT_SECRET,
-      { expiresIn: '1h' }
-    );
+    // Generate tokens
+    const accessToken = generateAccessToken(user);
+    const refreshToken = generateRefreshToken(user);
 
-    console.log(token)
+    // Save refresh token to database
+    user.refreshToken = refreshToken;
+    await user.save();
 
+    // Send tokens in response
     res.json({
-      token,
+      accessToken,
+      refreshToken,
       user: {
         id: user._id,
         username: user.username,
@@ -86,103 +73,74 @@ exports.login = async (req, res) => {
     });
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ 
-      message: 'Error logging in' 
-    });
-  }
-};
-    
-
-// // Create
-// exports.createUser = async (req, res) => {
-//   try {
-//     let result;
-//     if (Array.isArray(req.body)) {
-//       result = await User.insertMany(req.body);
-//     } else {
-//       const user = new User(req.body);
-//       result = await user.save();
-//     }
-
-//     res.status(201).json(result);
-//   } catch (err) {
-//     if (err.name === 'ValidationError') {
-//       return res.status(400).json({ error: err.message });
-//     }
-//     if (err.code === 11000) {
-//       return res.status(409).json({ error: "Duplicate key error. User with this username or email already exists." });
-//     }
-//     console.error("Error in createUser:", err);
-//     res.status(500).json({ error: "An error occurred while creating user(s)" });
-//   }
-// };
-
-// Read all
-exports.getAllUsers = async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (err) {
-    console.error("Error in getAllUsers:", err);
-    res.status(500).json({ error: "An error occurred while fetching users" });
+    res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-// Read one
-exports.getUser = async (req, res) => {
+exports.refreshToken = async (req, res) => {
   try {
-    const id = req.params._id;
-    const user = await User.findById(id);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
+    const { refreshToken } = req.body;
+    if (!refreshToken) {
+      return res.status(401).json({ message: 'Refresh token required' });
     }
-    res.json(user);
-  } catch (err) {
-    console.error("Error in getUser:", err);
-    res.status(500).json({ error: "An error occurred while fetching the user" });
+
+    const payload = jwt.verify(refreshToken, JWT_REFRESH_SECRET);
+    const user = await User.findById(payload.userId);
+
+    if (!user || user.refreshToken !== refreshToken) {
+      return res.status(401).json({ message: 'Invalid refresh token' });
+    }
+
+    const newAccessToken = generateAccessToken(user);
+    const newRefreshToken = generateRefreshToken(user);
+
+    user.refreshToken = newRefreshToken;
+    await user.save();
+
+    res.json({
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken
+    });
+  } catch (error) {
+    console.error('Refresh token error:', error);
+    res.status(401).json({ message: 'Invalid refresh token' });
   }
 };
 
-// // Update (Replace)
-// exports.replaceUser = async (req, res) => {
-//   try {
-//     const id = req.params.id;
-//     const doc = await User.findOneAndReplace({_id: id}, req.body, {new: true});
-//     if (!doc) {
-//       return res.status(404).json({ error: "User not found" });
-//     }
-//     res.status(200).json(doc);
-//   } catch (err) {
-//     console.error("Error in replaceUser:", err);
-//     res.status(400).json({ error: "An error occurred while replacing the user" });
-//   }
-// };
+exports.logout = async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+    if (!refreshToken) {
+      return res.status(400).json({ message: 'Refresh token required' });
+    }
 
-// // Update (Partial)
-// exports.updateUser = async (req, res) => {
-//   try {
-//     const id = req.params.id;
-//     const doc = await User.findOneAndUpdate({_id: id}, req.body, {new: true});
-//     if (!doc) {
-//       return res.status(404).json({ error: "User not found" });
-//     }
-//     res.status(200).json(doc);
-//   } catch (err) {
-//     console.error("Error in updateUser:", err);
-//     res.status(400).json({ error: "An error occurred while updating the user" });
-//   }
-// };
+    const user = await User.findOne({ refreshToken });
+    if (!user) {
+      return res.status(200).json({ message: 'Logged out successfully' });
+    }
 
-// // Delete
-// exports.deleteUser = async (req, res) => {
-//   try {
-//     const deletedUser = await User.findByIdAndDelete(req.params.id);
-//     if (!deletedUser) {
-//       return res.status(404).json({ error: "User not found" });
-//     }
-//     res.json(deletedUser);
-//   } catch (err) {
-//     console.error("Error in deleteUser:", err);
-//     res.status(500).json({ error: "An error occurred while deleting the user" });
-//   }
-// };
+    user.refreshToken = null;
+    await user.save();
+
+    res.json({ message: 'Logged out successfully' });
+  } catch (error) {
+    console.error('Logout error:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+const generateAccessToken = (user) => {
+  return jwt.sign(
+    { userId: user._id, username: user.username },
+    JWT_SECRET,
+    { expiresIn: '15m' }
+  );
+};
+
+const generateRefreshToken = (user) => {
+  return jwt.sign(
+    { userId: user._id },
+    JWT_REFRESH_SECRET,
+    { expiresIn: '7d' }
+  );
+};
