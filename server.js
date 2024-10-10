@@ -20,14 +20,17 @@ async function main() {
   console.log('Database connected');
 }
 
-server.get("/protected", authenticateToken, (req, res) => {
-  res.json({ message: "This is a protected route", user: req.user });
-});
+// server.get("/protected", authenticateToken, (req, res) => {
+//   res.json({ message: "This is a protected route", user: req.user });
+// });
 
-// Middleware setup
-server.use(cors());
+// Middleware setup 
 server.use(express.json());
-server.use(cors());
+// server.use(cors());
+server.use(cors({
+  origin: 'http://localhost:3000', // Replace with your frontend URL
+  credentials: true
+}));
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
