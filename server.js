@@ -28,7 +28,7 @@ async function main() {
 server.use(express.json());
 // server.use(cors());
 server.use(cors({
-  origin:  ['https://content-creator-s-rcafh9u52-risabkshetris-projects.vercel.app/', 'http://localhost:3000'],
+  origin:  ['https://content-creator-s-web.vercel.app/', 'http://localhost:3000'],
   credentials: true
 }));
 
