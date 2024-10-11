@@ -28,7 +28,7 @@ async function main() {
 server.use(express.json());
 // server.use(cors());
 server.use(cors({
-  origin: 'http://localhost:3000', // Replace with your frontend URL
+  origin: ['https://content-creator-s-web-git-main-risabkshetris-projects.vercel.app/', 'http://localhost:3000'],
   credentials: true
 }));
 
