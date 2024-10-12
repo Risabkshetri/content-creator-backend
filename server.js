@@ -8,6 +8,11 @@ const bcrypt = require('bcryptjs');
 const path = require('path');
 
 const server = express();
+
+server.get('/', (req, res) => {
+  res.send('Hellow I am Rishab kshetri!');
+});
+
 const blogRouter = require('./routes/blog');
 const videoRouter = require('./routes/video');
 const userProvider = require('./routes/users');
@@ -16,7 +21,9 @@ const userProvider = require('./routes/users');
 main().catch(err => console.log('Database connection error:', err));
 
 async function main() {
-  await mongoose.connect(`mongodb+srv://rishab:${process.env.DB_PASSWORD}@cluster0.loqz1.mongodb.net/creatorDB?retryWrites=true&w=majority&appName=Cluster0`);
+  // await mongoose.connect(`mongodb+srv://rishab:${process.env.DB_PASSWORD}@cluster0.loqz1.mongodb.net/creatorDB?retryWrites=true&w=majority&appName=Cluster0`);
+
+  await mongoose.connect(process.env.MONGO_URL);
   console.log('Database connected');
 }
 

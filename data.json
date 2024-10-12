@@ -1,0 +1,209 @@
+[
+    {
+        "_id": "66d9f96c6b248afddf63e512",
+        "title": "Introduction to Node.js",
+        "description": "A comprehensive introduction to Node.js, covering basic to advanced concepts.",
+        "content": "This is the full content of the Node.js tutorial video.",
+        "author": "John Doe",
+        "createdAt": "2023-09-01T10:00:00.000Z",
+        "updatedAt": "2023-09-01T12:00:00.000Z",
+        "category": "Programming",
+        "thumbnail": "https://res.cloudinary.com/dufaxdxsj/image/upload/v1725559000/8f41b76f-3aad-4df0-abee-0eb35d1c185a_uk02rv.webp",
+        "videoUrl": "https://example.com/videos/nodejs_intro.mp4",
+        "duration": 7200,
+        "views": 1500,
+        "likes": 350,
+        "tags": [
+            "Node.js",
+            "JavaScript",
+            "Backend",
+            "Programming"
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "66d9f96c6b248afddf63e513",
+        "title": "React for Beginners",
+        "description": "Learn the basics of React.js in this beginner-friendly course.",
+        "content": "This is the full content of the React.js beginner course.",
+        "author": "Jane Smith",
+        "createdAt": "2023-07-15T09:30:00.000Z",
+        "updatedAt": "2023-07-15T11:30:00.000Z",
+        "category": "Web Development",
+        "thumbnail": "https://res.cloudinary.com/dufaxdxsj/image/upload/v1725561518/download_itzdiz.jpg",
+        "videoUrl": "https://example.com/videos/react_beginners.mp4",
+        "duration": 5400,
+        "views": 2300,
+        "likes": 600,
+        "tags": [
+            "React",
+            "JavaScript",
+            "Frontend",
+            "Web Development"
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "66d9f96c6b248afddf63e514",
+        "title": "Mastering Python in 30 Days",
+        "description": "A complete guide to mastering Python programming within a month.",
+        "content": "This is the full content of the Python mastery course.",
+        "author": "Michael Green",
+        "createdAt": "2023-05-10T14:00:00.000Z",
+        "updatedAt": "2023-05-11T08:00:00.000Z",
+        "category": "Programming",
+        "thumbnail": "https://res.cloudinary.com/dufaxdxsj/image/upload/v1725561629/download_acx3c3.jpg",
+        "videoUrl": "https://example.com/videos/python_mastery.mp4",
+        "duration": 9000,
+        "views": 5000,
+        "likes": 1200,
+        "tags": [
+            "Python",
+            "Programming",
+            "Backend",
+            "Data Science"
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "66d9f96c6b248afddf63e515",
+        "title": "Introduction to Machine Learning",
+        "description": "A beginner's course on the fundamentals of machine learning.",
+        "content": "This is the full content of the machine learning introductory video.",
+        "author": "Lisa Williams",
+        "createdAt": "2023-08-21T16:00:00.000Z",
+        "updatedAt": "2023-08-21T18:00:00.000Z",
+        "category": "Data Science",
+        "thumbnail": "https://res.cloudinary.com/dufaxdxsj/image/upload/v1725561446/download_jdg8gm.jpg",
+        "videoUrl": "https://example.com/videos/ml_intro.mp4",
+        "duration": 7200,
+        "views": 4300,
+        "likes": 800,
+        "tags": [
+            "Machine Learning",
+            "AI",
+            "Data Science",
+            "Python"
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "66d9f96c6b248afddf63e516",
+        "title": "CSS Animations: Advanced Techniques",
+        "description": "Learn how to create stunning CSS animations with advanced techniques.",
+        "content": "This is the full content of the CSS animations tutorial.",
+        "author": "Emily Johnson",
+        "createdAt": "2023-06-10T10:30:00.000Z",
+        "updatedAt": "2023-06-10T12:00:00.000Z",
+        "category": "Web Design",
+        "thumbnail": "https://res.cloudinary.com/dufaxdxsj/image/upload/v1725561738/download_qgvaec.jpg",
+        "videoUrl": "https://example.com/videos/css_animations.mp4",
+        "duration": 3600,
+        "views": 3200,
+        "likes": 900,
+        "tags": [
+            "CSS",
+            "Web Design",
+            "Animations",
+            "Frontend"
+        ],
+        "__v": 0
+    }
+]
+
+[
+    {
+        "_id": "66d9f68e6b248afddf63e503",
+        "title": "Quantum Computing and AI: Impacts & Possibilities",
+        "description": "Discover how quantum computing and AI can revolutionize fields from medicine to disaster forecasting. This article explores the incredible future potential of these technologies, which once seemed like science fiction.",
+        "content": "Quantum Computing and AI Impacts & Possibilities Imagine a world wherein computers can instantly solve seemingly insurmountable puzzles. Imagine AI that develops medications that can save lives, arranges efficient delivery routes, and even forecasts disasters before they occur.",
+        "author": "Rishab Kshetri",
+        "createdAt": "2023-07-05T11:45:00.000Z",
+        "updatedAt": "2023-07-06T17:10:00.000Z",
+        "category": "Technology",
+        "thumbnail": "https://res.cloudinary.com/dufaxdxsj/image/upload/v1725560545/Untitled-design-2_iycyu1.webp",
+        "images": [
+            "https://example.com/images/quantum-computing-1.jpg",
+            "https://example.com/images/quantum-computing-2.jpg"
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "66d9f68e6b248afddf63e504",
+        "title": "Integrating AI with React: A Step-by-Step Guide",
+        "description": "Master the integration of AI into your React projects with this step-by-step guide. It’s perfect for developers eager to expand their skills and combine the power of AI with the versatility of React.",
+        "content": "Integrating AI with React: A Step-by-Step Guide When I first stumbled upon the idea of integrating AI with React, I was both excited and scared. Having worked with React for years as a developer, I thought I knew all its tricks. But AI? That was a whole new ballgame.",
+        "author": "Rishab Kshetri",
+        "createdAt": "2023-08-10T09:15:00.000Z",
+        "updatedAt": "2023-08-11T12:40:00.000Z",
+        "category": "Development",
+        "thumbnail": "https://res.cloudinary.com/dufaxdxsj/image/upload/v1725560660/Untitled-design-1-1_igusti.webp",
+        "images": [
+            "https://example.com/images/ai-with-react-1.jpg",
+            "https://example.com/images/ai-with-react-2.jpg"
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "66d9f68e6b248afddf63e505",
+        "title": "AI-Powered Writing Assistants: Make Your Writing Easier Every Day",
+        "description": "Writing has never been easier! Discover how AI-powered writing assistants can enhance your writing quality, eliminate common errors, and streamline your daily writing tasks, whether you're a student or professional.",
+        "content": "AI-Powered Writing Assistants: Skyrocket Quality, Eliminate Errors In today’s fast-moving digital world, writing clear and engaging content can often feel like a tough challenge. This article explores how AI-powered writing assistants make writing easier and more efficient.",
+        "author": "Rishab Kshetri",
+        "createdAt": "2023-09-02T14:20:00.000Z",
+        "updatedAt": "2023-09-03T16:55:00.000Z",
+        "category": "Productivity",
+        "thumbnail": "https://res.cloudinary.com/dufaxdxsj/image/upload/v1725560745/best_ei8ia7.webp",
+        "images": [
+            "https://example.com/images/ai-writing-assistants-1.jpg",
+            "https://example.com/images/ai-writing-assistants-2.jpg"
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "66dd10c6775197665311b479",
+        "title": "Generative AI with Python: Unlocking Creativity Through Code",
+        "description": "Explore how generative AI, powered by Python, is transforming industries by enabling machines to create art, music, text, and more. Learn how Python libraries are central to this creative revolution.",
+        "content": "<h1>Generative AI with Python: Unlocking Creativity Through Code</h1><p>Generative AI is transforming how we think about creativity. Powered by the versatility of Python, generative AI models are capable of producing artwork, music, writing, and even code. Once considered a purely human domain, creativity is now being augmented and expanded through advanced machine learning techniques.</p><h2>What is Generative AI?</h2><p>Generative AI refers to a class of AI models designed to generate new data that resembles existing datasets. From creating realistic images and composing music to generating human-like text, generative AI opens up new frontiers in content creation.</p><p>These models learn from vast amounts of data and apply patterns they've discovered to generate new and original outputs. One of the most powerful aspects of generative AI is its ability to blur the lines between human creativity and machine intelligence, especially when combined with Python’s rich ecosystem of libraries and frameworks.</p><h2>How Python Powers Generative AI</h2><p>Python has become the go-to programming language for AI development, particularly for generative AI. Its simplicity, vast libraries, and active community make it the ideal choice for building complex AI models. Some of the key Python libraries that enable generative AI include:</p><ul><li><strong>TensorFlow</strong> and <strong>PyTorch:</strong> These are two of the most popular frameworks for building and training deep learning models. Both offer the tools necessary for developing advanced neural networks capable of generative tasks.</li><li><strong>Keras:</strong> A user-friendly API built on top of TensorFlow that allows developers to build generative models quickly and efficiently.</li><li><strong>GPT (Generative Pre-trained Transformer):</strong> GPT models are particularly known for their ability to generate human-like text. Python libraries like <em>transformers</em> make working with these models seamless.</li><li><strong>OpenCV:</strong> This computer vision library enables Python developers to work with image data, making it a key tool in generative AI models focused on image synthesis and manipulation.</li></ul><img src=\"https://example.com/images/generative-ai-python.jpg\" alt=\"Generative AI Python illustration\" style=\"width:300px; float:right; margin:10px;\"><h2>Applications of Generative AI</h2><p>The potential of generative AI is vast, and Python is at the center of its most exciting innovations. Below are some real-world applications:</p><h3>1. Art and Design</h3><p>Generative AI models like GANs (Generative Adversarial Networks) can create stunningly realistic artwork or designs by learning from existing art. Python libraries such as TensorFlow and Keras enable artists and developers to generate new creative works at scale.</p><h3>2. Music Composition</h3><p>AI-generated music is becoming more common, with algorithms capable of composing songs in various styles. Python-based frameworks like Magenta, developed by Google, allow developers to build models that generate music from scratch.</p><h3>3. Text Generation</h3><p>With models like GPT-4, developers can generate coherent, contextually relevant text. This is particularly useful for content creation, chatbots, and interactive fiction. Python libraries like Hugging Face’s <em>transformers</em> make working with GPT models straightforward and accessible.</p><h3>4. Code Generation</h3><p>Python is not only used to build generative AI models, but it's also a language that AI can learn to write. Code generation models can write Python scripts or even help automate coding tasks, making them invaluable in software development.</p><img src=\"https://example.com/images/generative-ai-art.jpg\" alt=\"Generative AI artwork\" style=\"width:300px; float:left; margin:10px;\"><h2>Python Libraries for Generative AI</h2><p>Several Python libraries are essential for implementing generative AI models. Below are some of the most important:</p><ul><li><strong>Transformers:</strong> Hugging Face’s transformers library allows developers to use pre-trained models for text generation, translation, summarization, and more.</li><li><strong>Magenta:</strong> A Python-based library developed by Google for creating generative models in music and art.</li><li><strong>GANs:</strong> The GAN architecture, popularized for image generation, can implemented using Python libraries like TensorFlow and Keras.</li><li><strong>Autoencoders:</strong> Python-based libraries can also implement autoencoders for tasks like image denoising and latent space manipulation.</li></ul><h2>The Future of Generative AI with Python</h2><p>The future of generative AI is both exciting and unpredictable. As Python libraries evolve and models become more sophisticated, the ability of machines to generate realistic and creative content will only improve. We are just beginning to scratch the surface of what’s possible, and Python will continue to be a major player in this space.</p> <h3>Conclusion</h3><p>Generative AI, powered by Python, is reshaping creativity across industries. Whether it’s art, music, text, or code, Python provides the tools needed to build these groundbreaking AI models. As the technology matures, we can expect even more innovative applications to emerge, making Python the engine that drives the creative AI revolution.</p>",
+        "author": "Rishab Kshetri",
+        "createdAt": "2023-07-05T11:45:00.000Z",
+        "updatedAt": "2023-07-06T17:10:00.000Z",
+        "category": "Technology",
+        "thumbnail": "https://res.cloudinary.com/dufaxdxsj/image/upload/v1725560545/Untitled-design-2_iycyu1.webp",
+        "images": [
+            "https://example.com/images/generative-ai-python.jpg",
+            "https://example.com/images/generative-ai-art.jpg"
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "66dd139d775197665311b480",
+        "title": "Master in Web Dev with AI",
+        "description": "Learn how artificial intelligence is revolutionizing web development and how mastering AI tools and frameworks can help you build smarter, more responsive web applications.",
+        "content": "<h1>Master in Web Dev with AI</h1><p>The field of web development is rapidly evolving, and artificial intelligence (AI) is at the forefront of this transformation. AI-driven tools and frameworks are enabling developers to create more intelligent and interactive web applications than ever before. From automating routine tasks to enhancing user experiences, AI is becoming a critical skill for web developers to master.</p><h2>AI in Front-End Development</h2><p>Front-end development focuses on the user interface and experience. AI tools are now integrated into frameworks like React and Angular to provide more dynamic and predictive user experiences. AI-driven algorithms can analyze user behavior and personalize the content delivered on a website, ensuring more relevant and engaging experiences for users.</p><h2>AI in Back-End Development</h2><p>On the back-end side, AI is being used to optimize databases, predict server loads, and streamline data processing. Python-based AI libraries like TensorFlow and PyTorch are frequently integrated into web applications to process large data sets in real-time, making websites more responsive and capable of handling complex tasks such as recommendation engines, chatbots, and fraud detection systems.</p><img src=\"https://example.com/images/web-dev-ai.jpg\" alt=\"AI-powered web development\" style=\"width:300px; float:right; margin:10px;\"><h2>AI-Powered Tools for Web Developers</h2><ul><li><strong>Chatbots:</strong> AI chatbots can engage users in real-time, answering their questions and providing support without the need for human intervention.</li><li><strong>Recommendation Engines:</strong> AI algorithms analyze user preferences and behavior to provide personalized recommendations, boosting user engagement and sales.</li><li><strong>Automated Code Generation:</strong> Tools like GitHub Copilot use AI to suggest code snippets, speeding up development processes and reducing human error.</li></ul><h2>Frameworks and Libraries</h2><p>Developers who want to master AI in web development should become familiar with the following tools:</p><ul><li><strong>TensorFlow.js:</strong> A JavaScript library for building machine learning models directly in the browser.</li><li><strong>PyTorch:</strong> Python's leading deep learning library can be integrated into back-end services to provide real-time AI functionalities.</li><li><strong>React.js:</strong> This popular front-end framework now has numerous plugins that integrate AI-driven features such as chatbots and personalization engines.</li></ul><h2>The Future of Web Development with AI</h2><p>As AI technologies continue to evolve, they will undoubtedly become a cornerstone of web development. AI will enable developers to create smarter, more intuitive, and highly personalized websites, enhancing user experiences and automating complex processes. Mastering AI in web development will be key to staying ahead in this competitive and rapidly evolving field.</p><h3>Conclusion</h3><p>AI is transforming web development by introducing intelligent, automated features that can enhance both the user experience and the development process. Developers who embrace AI-driven tools and frameworks will not only build more advanced web applications but also streamline their workflows, enabling them to stay ahead of the curve in the competitive web development landscape.</p>",
+        "author": "Rishab Kshetri",
+        "createdAt": "2023-07-10T11:00:00.000Z",
+        "updatedAt": "2023-07-11T15:30:00.000Z",
+        "category": "Technology",
+        "thumbnail": "https://example.com/images/ai-web-dev.jpg",
+        "images": [
+            "https://example.com/images/web-dev-ai.jpg"
+        ],
+        "__v": 0
+    },
+    {
+        "_id": "66dd14b8775197665311b488",
+        "title": "Master in Prompt Engineering in 30 Days",
+        "description": "Master the art of prompt engineering and learn how to craft effective AI prompts to generate optimal outputs in just 30 days. Gain hands-on experience with AI models and prompt optimization techniques.",
+        "content": "<div className=\"prose max-w-none mx-auto p-4\"><h1 className=\"text-3xl font-bold text-gray-900 mb-6\">Master in Prompt Engineering in 30 Days</h1><p className=\"text-lg text-gray-700 leading-relaxed mb-4\">Prompt engineering is becoming one of the most critical skills for interacting with advanced AI models like GPT, DALL·E, and others. In just 30 days, you can learn how to craft effective prompts that guide AI models to generate precise and relevant outputs. This guide will take you through the essential steps and provide a day-by-day roadmap to mastering prompt engineering.</p><h2 className=\"text-2xl font-semibold text-gray-800 mb-4\">Why Prompt Engineering Matters</h2><p className=\"text-lg text-gray-700 leading-relaxed mb-4\">In the world of AI, the quality of the output is directly related to the quality of the input, also known as the prompt. Crafting the right prompts ensures that AI models deliver accurate, contextually relevant, and actionable results. This skill is essential for AI developers, data scientists, and anyone working with generative models.</p><img src=\"https://example.com/images/prompt-engineering.jpg\" alt=\"Prompt engineering illustration\" className=\"w-96 h-auto float-right ml-4 mb-4 shadow-lg rounded-lg\"><h2 className=\"text-2xl font-semibold text-gray-800 mb-4\">Day-by-Day Learning Plan</h2><p className=\"text-lg text-gray-700 leading-relaxed mb-4\">The following plan will help you gradually build your skills in prompt engineering over 30 days:</p><ul className=\"list-disc list-inside text-lg text-gray-700 leading-relaxed mb-6\"><li className=\"mb-2\"><strong>Week 1:</strong> Basics of AI and Prompt Creation - Learn how AI models process natural language prompts and practice creating basic prompts for common AI tasks like text generation.</li><li className=\"mb-2\"><strong>Week 2:</strong> Advanced Prompt Techniques - Delve into more complex prompt structures and experiment with multi-step prompts for image generation and code creation.</li><li className=\"mb-2\"><strong>Week 3:</strong> Optimizing AI Responses - Learn techniques to fine-tune and optimize your prompts to get the best results from AI models, including prompt length, specificity, and context.</li><li className=\"mb-2\"><strong>Week 4:</strong> Real-World Applications - Apply prompt engineering to real-world problems in industries such as marketing, development, design, and customer service.</li></ul><h2 className=\"text-2xl font-semibold text-gray-800 mb-4\">Essential Tools and Resources</h2><p className=\"text-lg text-gray-700 leading-relaxed mb-4\">To master prompt engineering, you’ll need the right tools. Here are some essential platforms and resources that can help you practice and experiment with AI models:</p><ul className=\"list-disc list-inside text-lg text-gray-700 leading-relaxed mb-6\"><li className=\"mb-2\"><strong>OpenAI Playground:</strong> Experiment with GPT models in OpenAI’s interactive environment.</li><li className=\"mb-2\"><strong>Hugging Face:</strong> Use Hugging Face’s AI models and community resources to refine your prompt engineering skills.</li><li className=\"mb-2\"><strong>MidJourney:</strong> A platform for experimenting with AI-driven image generation using detailed prompts.</li></ul><h2 className=\"text-2xl font-semibold text-gray-800 mb-4\">The Future of Prompt Engineering</h2><p className=\"text-lg text-gray-700 leading-relaxed mb-6\">As AI models become more powerful, the need for effective prompt engineering will only grow. This skill will play a crucial role in a wide range of industries, from technology and marketing to entertainment and healthcare. By mastering prompt engineering, you’ll be at the forefront of this exciting field and prepared to take full advantage of the AI revolution.</p><h3 className=\"text-xl font-semibold text-gray-800 mb-4\">Conclusion</h3><p className=\"text-lg text-gray-700 leading-relaxed mb-4\">With dedicated practice over 30 days, you can develop the skills needed to become proficient in prompt engineering. Whether you're a developer, content creator, or entrepreneur, prompt engineering will empower you to harness AI more effectively and stay ahead of the competition.</p></div>",
+        "author": "Rishab Kshetri",
+        "createdAt": "2023-08-01T09:00:00.000Z",
+        "updatedAt": "2023-08-02T12:15:00.000Z",
+        "category": "AI",
+        "thumbnail": "https://example.com/images/prompt-engineering-thumb.jpg",
+        "images": [
+            "https://example.com/images/prompt-engineering.jpg"
+        ],
+        "__v": 0
+    }
+]
