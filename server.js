@@ -35,7 +35,7 @@ async function main() {
 server.use(express.json());
 // server.use(cors());
 server.use(cors({
-  origin: ['https://red-smoke-0afb13400.5.azurestaticapps.net','https://content-creator-s-web.vercel.app', 'http://localhost:3000'],
+  origin: ['https://red-smoke-0afb13400.5.azurestaticapps.net','http://localhost:3000'],
   credentials: true
 }));
 
