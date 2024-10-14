@@ -21,19 +21,23 @@ const userProvider = require('./routes/users');
 main().catch(err => console.log('Database connection error:', err));
 
 async function main() {
-  // await mongoose.connect(`mongodb+srv://rishab:${process.env.DB_PASSWORD}@cluster0.loqz1.mongodb.net/creatorDB?retryWrites=true&w=majority&appName=Cluster0`);
+  if (!process.env.MONGO_URI) {
+    console.error('MONGO_URL is not defined in the environment variables');
+    process.exit(1);
+  }
 
-  await mongoose.connect(process.env.MONGO_URL);
-  console.log('Database connected');
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('Database connected');
+  } catch (error) {
+    console.error('Failed to connect to the database:', error.message);
+    process.exit(1);
+  }
 }
 
-// server.get("/protected", authenticateToken, (req, res) => {
-//   res.json({ message: "This is a protected route", user: req.user });
-// });
 
 // Middleware setup 
 server.use(express.json());
-// server.use(cors());
 server.use(cors({
   origin: ['https://red-smoke-0afb13400.5.azurestaticapps.net','http://localhost:3000'],
   credentials: true
@@ -52,10 +56,8 @@ function authenticateToken(req, res, next) {
   });
 }
 
-// Use 'combined' format for morgan to avoid deprecation warning
 server.use(morgan('combined'));
 
-// Serve static files, with a fallback in case PUBLIC_DIR is not set
 const publicDir = process.env.PUBLIC_DIR || path.join(__dirname, 'public');
 server.use(express.static(publicDir));
 
@@ -63,9 +65,7 @@ server.use(express.static(publicDir));
 server.use('/api/blogs', blogRouter.router);
 server.use('/api/videos', videoRouter.router);
 server.use('/api/users', userProvider.router);
-// server.use('/', userProvider.router);
 
-// Server setup - use the PORT from environment variables or fallback to 8081
 const PORT = process.env.PORT || 8081;
 server.listen(PORT, () => {
   console.log(`Server started at port ${PORT}`);
