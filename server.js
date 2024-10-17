@@ -10,7 +10,7 @@ const path = require('path');
 const server = express();
 
 server.get('/', (req, res) => {
-  res.send('Hellow I am Rishab kshetri!');
+  res.send('Hellow I am Rishab kshetri from backend!');
 });
 
 const blogRouter = require('./routes/blog');
